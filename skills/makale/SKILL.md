@@ -59,7 +59,7 @@ reserves for the owner, ask before anything else.
 8. **Image (optional, not blocking):** if the article has no image, `gorsel` writes the prompt (and
    draws a diagram if a structural concept needs one). Give the owner the prompt in a copyable block.
 9. **Check and prepare:** one `yayinci` run with modes kontrol + hazirla. Pages: every language of
-   the article plus the pages that got inbound links. **HAZIR DEĞİL** → route each issue (content →
+   the article plus the pages in `gelen-linkler.patch`. **HAZIR DEĞİL** → route each issue (content →
    `yazar`, image → `gorsel`), then rerun kontrol.
 10. **The one question.** One short message in the owner's language: the title in each language and what the reader
     gets (one sentence); the denetim and editor verdicts, one line each; desktop and mobile

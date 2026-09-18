@@ -38,7 +38,7 @@ show", comparisons, anything a sceptical reader could answer with "says who?". F
 ## 2. The profile's locked rules
 
 Check every rule in the profile's section 2 against the text: PASS or FAIL with file:line; a FAIL
-on a locked rule is ENGELLEYİCİ unless the profile says otherwise. Also: internal links point to
+on a locked rule is ENGELLEYİCİ unless the profile says otherwise. Also (inbound links are in `<slug>/gelen-linkler.patch`; check the sentences there too): internal links point to
 routes or content that exist (a broken one is ENGELLEYİCİ); external links open (broken is listed,
 not blocking); frontmatter within the profile's limits; medical or legal tone makes no promises,
 doesn't minimise risk, and sends the reader to a professional where the decision is theirs.

@@ -26,8 +26,14 @@ match voice and structure, and the content schema file (`icerik.sema_dosyasi`) f
   order the reader needs it: `##` headings a stressed reader can scan, short paragraphs, concrete
   questions the reader can ask rather than general advice.
 - Internal links from the pack's plan, only to pages that exist, each language linking inside its
-  own language. Add the pack's inbound links to the existing pages it names, changing only the
-  sentence it names.
+  own language.
+- **Inbound links go into a patch, not into the live pages.** While the article is a draft, no
+  existing page may link to it: any other publish in between would ship a broken link. For each
+  inbound link in the pack, edit only the sentence it names in the existing page. Then save the edits
+  with `git diff -- <those pages> > <calisma_klasoru>/<slug>/gelen-linkler.patch` and undo them with
+  `git apply -R` on that patch. Use only pages with no uncommitted changes (`git status --porcelain --
+  <page>` prints nothing); skip and report any other. The publisher applies the patch together with
+  the article.
 - Frontmatter per the schema file: `sources` lists the sources actually used, the description stays
   within `icerik.aciklama_max`, the date is today, and the draft flag (`icerik.taslak_alani`) is on
   so nothing reaches production. Don't write schema/JSON-LD into frontmatter; the layout emits it.
@@ -42,5 +48,6 @@ For **every** point, write one line in `<slug>/4-yanitlar.md`: `✅ kabul`: what
 `❌ ret`: why, with evidence · `🟡 kısmi`: what and why. Don't accept a point just because it is
 ranked HIGH, and don't reject one to defend the draft; judge it against the sources, the site and
 the reader. Checker points marked ENGELLEYİCİ cannot be rejected: fix them or remove the claim.
-Apply accepted changes in every language, rebuild, and report. **List the factual claims you
+Apply accepted changes in every language (inbound-link changes go into a regenerated
+`gelen-linkler.patch`, as in drafting), rebuild, and report. **List the factual claims you
 changed**, so the checker's second round can stay scoped to them.

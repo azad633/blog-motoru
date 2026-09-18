@@ -74,6 +74,7 @@ All under the profile's `calisma_klasoru`; `<slug>` is the slug in the site's pr
 | `<slug>/2-denetim.md` | denetci | `GEÇTİ` or `ENGELLENDİ (n engelleyici)` |
 | `<slug>/3-editor.md` | editor | one-line verdict; final pass under `## Son tur` |
 | `<slug>/4-yanitlar.md` | yazar | one line per review point: ✅ kabul / ❌ ret / 🟡 kısmi |
+| `<slug>/gelen-linkler.patch` | yazar | a git diff adding the inbound links; applied only when the article goes live |
 | `kontrol/<YYYY-MM-DD>-<slug>.md` | yayinci | `HAZIR` or `HAZIR DEĞİL (n sorun)` |
 | `strateji/<YYYY-MM-DD>-plan.md` | arastirmaci | ranked list of next topics |
 | `bekleyenler.md` | orchestrator | `- [ ] <one plain line>` per open owner decision |

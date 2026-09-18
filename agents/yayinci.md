@@ -20,7 +20,8 @@ scripts live in `${CLAUDE_PLUGIN_ROOT}/araclar/`. Your prompt names the modes to
 ## Mode: kontrol
 
 1. **Drafts.** If the article is still a draft, turn the draft flag (`icerik.taslak_alani`) off in
-   the named files for this check only, and note the files.
+   the named files for this check only, and note the files. If `<slug>/gelen-linkler.patch` exists,
+   apply it too (`git apply`); the pages it touches are checked with the article.
 2. **Build and types.** `<build> 2>&1 | tail -40`, then `<tip_kontrol> 2>&1 | tail -30`. A failure
    stops the check; report the error verbatim.
 3. **Mechanical checks.** `node ${CLAUDE_PLUGIN_ROOT}/araclar/dist-kontrol.mjs --profil <profile> --sayfa <path> ...`
@@ -29,8 +30,8 @@ scripts live in `${CLAUDE_PLUGIN_ROOT}/araclar/`. Your prompt names the modes to
 4. **Screenshots.** `node ${CLAUDE_PLUGIN_ROOT}/araclar/ekran.mjs --profil <profile> --cikti <calisma_klasoru>/kontrol/ekran <path> ...`.
    **Read every PNG** and note anything visibly broken: overflow, a missing image, unstyled content,
    overlapping text.
-5. **Restore** the draft flags you turned off, then confirm with `git diff` on those files that
-   only the intended content changes remain.
+5. **Restore** the draft flags you turned off and reverse the patch (`git apply -R`), then confirm with
+   `git diff` on those files that only the intended content changes remain.
 6. Write `<calisma_klasoru>/kontrol/<YYYY-MM-DD>-<slug>.md`: first line **HAZIR** or
    **HAZIR DEĞİL (n sorun)**, then one line per step with PASS/FAIL and the evidence, then the PNG paths.
 
@@ -51,13 +52,15 @@ scripts live in `${CLAUDE_PLUGIN_ROOT}/araclar/`. Your prompt names the modes to
 ## Publish: only with a line starting `ONAY:` in your prompt
 
 1. If an owner-side step is needed and the prompt doesn't confirm it is done, stop and say so.
-2. Turn the draft flag off in the approved files only; rerun `<paketle>` if set.
+2. Turn the draft flag off in the approved files only and apply `<slug>/gelen-linkler.patch` if it
+   exists (the inbound links must go live with the article, never before it); rerun `<paketle>` if set.
 3. `<deploy>`: every file must succeed. On failure run it once more; still failing → stop and report
    the exact errors. Never print credentials.
 4. `<canli_dogrula>` if set. Then for each new or changed URL: HTTP 200, and a unique phrase from the
    new content found in the live HTML, which proves the *new* version is live. Cache notes from the
    profile's section 6 apply (say "cache needs purging" instead of calling it a failure).
-5. **Git per the profile's `git` value.** Stage this publish's files by explicit path. Commit message:
+5. **Git per the profile's `git` value.** Stage this publish's files by explicit path: the article, its image and
+   the pages the patch touched. Commit message:
    a short plain title saying what changed for the reader, a blank line, one paragraph on why, then
    `Co-Authored-By: Claude <noreply@anthropic.com>`. Push only if `git: otomatik-push` or the ONAY
    line covers pushing.
