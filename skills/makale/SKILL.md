@@ -33,8 +33,9 @@ Tell the owner in one line which one and why. If unsure between two, take the li
 
 ## 2. Topic (new article without a topic)
 
-Read the newest `<calisma_klasoru>/strateji/*-plan.md`. If it is less than 30 days old, show its top
-5 (title + one line why) and let the owner pick with AskUserQuestion. Otherwise run `arastirmaci` in
+Read the newest `<calisma_klasoru>/strateji/*-plan.md`. If it is less than 30 days old, drop the
+topics the site already covers (a slug or subject that exists in the content folders, published or
+draft), then show the top 5 left (title + one line why) and let the owner pick with AskUserQuestion. Otherwise run `arastirmaci` in
 strateji mode first. **The owner picks; you don't.** If the topic touches something the profile
 reserves for the owner, ask before anything else.
 
