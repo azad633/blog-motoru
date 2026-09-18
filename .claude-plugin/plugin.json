@@ -1,0 +1,6 @@
+{
+  "name": "blog-motoru",
+  "description": "Siteden bağımsız içerik motoru: araştırma, yazım, kaynak denetimi, editör, görsel ve yayın. Her site kendi site-profili.md dosyasıyla bağlanır.",
+  "version": "0.3.0",
+  "author": { "name": "Ewan" }
+}

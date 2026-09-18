@@ -1,0 +1,7 @@
+.DS_Store
+node_modules/
+# bu makinede eklentinin kurulu olduğu site klasörleri (guncelle.sh okur)
+siteler.txt
+
+# sahibinin çalışma notları: bu makinede kalır, repoya girmez
+HANDOVER.md

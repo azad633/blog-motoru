@@ -1,0 +1,12 @@
+{
+  "name": "motor",
+  "description": "blog-motoru eklentisinin pazarı (tek eklenti, bu repo).",
+  "owner": { "name": "Ewan" },
+  "plugins": [
+    {
+      "name": "blog-motoru",
+      "source": "./",
+      "description": "Siteden bağımsız içerik motoru: araştırma, yazım, kaynak denetimi, editör, görsel ve yayın."
+    }
+  ]
+}
