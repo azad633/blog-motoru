@@ -13,7 +13,7 @@ Talk to the owner in the profile's `iletisim_dili` (Turkish if unset), briefly.
    `${CLAUDE_PLUGIN_ROOT}/skills/kurallar/SKILL.md`.
 2. **Reuse first.** If the newest `<calisma_klasoru>/strateji/*-plan.md` is less than 30 days old and
    the owner didn't say "yenile" or ask a new question, use it; no new research run.
-3. **Otherwise** run `blog-motoru:arastirmaci` in strateji mode with the absolute profile path and
+3. **Otherwise** run `blog-motoru:arastirmaci` in the foreground (`run_in_background: false`) in strateji mode with the absolute profile path and
    today's date. If `<calisma_klasoru>/veri/` holds a Search Console export, name the file in the
    prompt. With a question from the owner, tell the agent to focus the plan on it.
 4. **Show** the top 5 compactly: title, one line on why, one risk flag if any. Ask with

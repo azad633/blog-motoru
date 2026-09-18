@@ -11,6 +11,8 @@ Orchestrator steps. Talk to the owner in the profile's `iletisim_dili` (Turkish 
 0. **Setup.** Read `site-profili.md` at the project root (none → stop, say a profile is needed, template
    `${CLAUDE_PLUGIN_ROOT}/sablonlar/site-profili.md`) and the engine rules
    `${CLAUDE_PLUGIN_ROOT}/skills/kurallar/SKILL.md`. Agent prompts carry the absolute profile path.
+   Run every agent in the foreground (`run_in_background: false`) so the job stays on this skill's
+   Sonnet turn.
 1. **Scope.** From `git status` and the conversation, state what is meant to go live. Unrelated
    uncommitted changes stay out unless the owner says they belong.
 2. **Proportionality.** Content with factual claims changed → `blog-motoru:denetci` on the changed

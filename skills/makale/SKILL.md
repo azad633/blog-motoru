@@ -18,6 +18,10 @@ ask only what only the owner can decide. Talk to the owner in the profile's `ile
 - Every agent prompt you write must contain: the absolute profile path; the slug folder
   `<calisma_klasoru>/<slug>/`; the exact files to read and write; what NOT to re-verify. Agents start
   with no memory of this conversation.
+- **Run every agent in the foreground** (`run_in_background: false`); for a parallel step, put both
+  Agent calls in one message. The whole job then stays inside this skill's turn, which runs on Sonnet.
+  A turn that ends while agents run in the background comes back on the session's own model
+  (usually Opus), which is what made the first pilot's orchestration expensive.
 - Agents: `blog-motoru:arastirmaci`, `blog-motoru:yazar`, `blog-motoru:denetci`,
   `blog-motoru:editor`, `blog-motoru:gorsel`, `blog-motoru:yayinci`.
 

@@ -73,7 +73,9 @@ Rapor başlıkları ve karar kelimeleri (GEÇTİ, HAZIR, ONAYLANDI...) her dilde
 | yayinci | Sonnet | Kontrol (build, script'ler, ekran görüntüleri), hazırlık ve yalnızca `ONAY:` ile yayın yapar. |
 
 Üç komut yönlendirme işi yaptığı için Sonnet'te çalışır. Oturum Opus'ta açılmış olsa bile komut
-çalışırken model Sonnet'e geçer.
+çalışırken model Sonnet'e geçer. Bu geçiş yalnızca komutun kendi turu için geçerlidir, o yüzden komut
+ajanları önde çalıştırır ve bütün işi tek turda bitirir. En ucuz yol, içerik oturumlarını baştan
+Sonnet'te açmaktır; yazar, denetçi ve editör yine kendi modelleri olan Opus'ta çalışır.
 
 Kurallar iki katmanlıdır. Her sitede geçerli olan motor kuralları `skills/kurallar/SKILL.md`
 dosyasındadır ve her ajana önceden yüklenir. Siteye özgü kurallar o sitenin `site-profili.md`
