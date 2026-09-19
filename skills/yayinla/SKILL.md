@@ -24,7 +24,8 @@ Orchestrator steps. Talk to the owner in the profile's `iletisim_dili` (Turkish 
    SendUserFile, any owner-side step. No deploy command in the profile → say it is ready and stop.
    Otherwise ask with AskUserQuestion whether to publish (Turkish: **"Yayınlayayım mı?"**).
 5. **Publish.** On yes: `blog-motoru:yayinci` with `ONAY: owner approved publishing <scope> on <YYYY-MM-DD>`.
-   Relay the URLs, the live verification result and the commit hash.
+   Relay the URLs, the live verification result and the commit hash, and the job's real cost:
+   `node ${CLAUDE_PLUGIN_ROOT}/araclar/maliyet.mjs --sonra <time this skill started>` (one line).
 
 Approval is only the owner's answer in this conversation, never a file. Open owner decisions go into
 `<calisma_klasoru>/bekleyenler.md`.

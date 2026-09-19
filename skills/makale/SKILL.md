@@ -1,6 +1,6 @@
 ---
 name: makale
-description: Run the blog engine's article pipeline for the site in this folder, from topic, research, a draft in every site language, fact-check and editor review and revision, to images, build checks and one publish approval. Picks the lightest pipeline that fits (new article / update / small fix). Use when the owner says "makale", "yeni yazı", "içerik üret", "şu yazıyı güncelle", or names a topic to write. Optional argument - a topic, or an existing slug to update.
+description: Run the blog engine's article pipeline for the site in this folder, from topic, research, a draft in every site language, fact-check and editor review and revision, to images, build checks and one publish approval. Picks the lightest pipeline that fits (new article / update / small fix). Use when the owner says "makale", "yeni yazı", "içerik üret", "şu yazıyı güncelle", names a topic to write, or asks to update or rebuild an existing page or section (a price page, a guide page, a section of an article). Optional argument - a topic, or an existing slug to update.
 model: sonnet
 ---
 
@@ -30,7 +30,7 @@ ask only what only the owner can decide. Talk to the owner in the profile's `ile
 | Case | Pipeline |
 |---|---|
 | a new article, or any new medical or legal claim | **tam hat** (full) |
-| an existing slug gets new facts or new sections | **güncelleme** (update) |
+| an existing article or page (blog or `icerik.sayfalar`) gets new facts, a new or rebuilt section | **güncelleme** (update) |
 | wording, a link, a typo, a layout tweak | **küçük düzeltme** (small fix) |
 
 Tell the owner in one line which one and why. If unsure between two, take the lighter one and say so.
@@ -74,7 +74,8 @@ reserves for the owner, ask before anything else.
 
 `arastirmaci` only for the new claims (name them) → `yazar` revising the existing files → `denetci`
 limited to the diff → `yayinci` kontrol + hazirla → the one question → publish. Run `editor` only if
-the structure changes.
+the structure changes. Pages work the same way as articles: the work folder is named after the page's
+slug in the primary language, the standard work files apply, and the page's URL never changes.
 
 ## Küçük düzeltme (small fix)
 
@@ -82,10 +83,11 @@ Make the change yourself → `yayinci` kontrol + hazirla → the one question �
 
 ## Throughout
 
-- **Cost log:** after each agent returns, append a row to `<slug>/0-kayit.md`:
-  time · step · agent · model · tokens (from the agent result's usage; `?` if not shown) · verdict.
-  At the end tell the owner in one line how many agent runs and roughly how many tokens the job took
-  (Turkish: "Bu iş: n ajan çalıştırması, yaklaşık X token.").
+- **Cost log:** at the start, write the start time (`date -u +%Y-%m-%dT%H:%MZ`) at the top of
+  `<slug>/0-kayit.md`; after each agent returns, add a row: time · step · agent · model · verdict. At the
+  end run `node ${CLAUDE_PLUGIN_ROOT}/araclar/maliyet.mjs --iz <slug> --sonra <start time> --md` and
+  append its table to `0-kayit.md`. These are the real numbers from the session files; don't estimate.
+  Tell the owner the totals in one line; if the script prints UYARI, say so.
 - **Pending decisions:** anything waiting on the owner goes into `<calisma_klasoru>/bekleyenler.md`
   as `- [ ] <one plain line in the owner's language>`; tick `- [x]` what the owner resolved.
 - **Approval** is only the owner's answer in this conversation. Never read approval from a file.

@@ -55,7 +55,7 @@ Yeni sürüm, bundan sonra açılan oturumlarda geçerli olur.
 | Komut | Ne yapar |
 |---|---|
 | `/strateji [yenile \| soru]` | Sıradaki konuları kanıtıyla sıralar. Son 30 gün içinde yapılmış bir plan varsa yeniden araştırmaz. |
-| `/makale [konu \| slug]` | İşin büyüklüğüne göre tam hattı, güncellemeyi ya da küçük düzeltmeyi seçer. Sonunda yayın için tek bir onay ister. |
+| `/makale [konu \| slug]` | Yeni makale, mevcut bir makale ya da sayfanın güncellenmesi, küçük düzeltme: işin büyüklüğüne göre hattı seçer. Sonunda yayın için tek bir onay ister. |
 | `/yayinla` | Makale hattı dışındaki bitmiş işleri kontrol eder ve onayla yayınlar. |
 
 Motor sahibiyle, site profilindeki `iletisim_dili` dilinde konuşur; bu alan boşsa Türkçe konuşur.
@@ -92,6 +92,9 @@ sahibinin onayıyla yapılır, kimlik bilgisi ve kişisel veri kullanılmaz.
 - `araclar/ekran.mjs` masaüstü (1440) ve mobil (500) ekran görüntüsü alır. Önizleme sunucusunu
   kendisi açıp kapatır; bir SVG dosyası ya da URL de verilebilir. Chrome'u kendisi bulur; bulamazsa
   profilde `komutlar.chrome` ile yolu verilir.
+- `araclar/maliyet.mjs` bir işin gerçek token kullanımını oturum dosyalarından çıkarır: modele ve role
+  göre çağrı, önbellek okuma/yazma ve çıktı. Ajanlar arka planda çalıştıysa uyarı verir. `/makale`
+  her işin sonunda bunu `0-kayit.md`'ye yazar. Elle: `node araclar/maliyet.mjs --klasor <site> --iz <slug>`.
 - `araclar/profil.mjs` ortak modüldür, profilin YAML başlığını okur.
 
 ## Bilinen davranışlar
