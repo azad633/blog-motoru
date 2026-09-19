@@ -69,7 +69,7 @@ All under the profile's `calisma_klasoru`; `<slug>` is the slug in the site's pr
 
 | File | Written by | First line |
 |---|---|---|
-| `<slug>/0-kayit.md` | orchestrator | run log: time · step · agent · model · tokens · verdict |
+| `<slug>/0-kayit.md` | yonlendirici | start time, then one row per agent: time · step · agent · model · verdict; /makale appends the real cost table |
 | `<slug>/1-arastirma.md` | arastirmaci | `# <topic>: araştırma paketi (<date>)` |
 | `<slug>/2-denetim.md` | denetci | `GEÇTİ` or `ENGELLENDİ (n engelleyici)` |
 | `<slug>/3-editor.md` | editor | one-line verdict; final pass under `## Son tur` |

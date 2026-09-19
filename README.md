@@ -65,6 +65,7 @@ Rapor başlıkları ve karar kelimeleri (GEÇTİ, HAZIR, ONAYLANDI...) her dilde
 
 | Ajan | Model | İş |
 |---|---|---|
+| yonlendirici | Sonnet | Bir işi baştan sona yönetir: ajanları sırayla çağırır, raporları birleştirir, yayından önce durup kısa bir rapor verir. Her işte temiz bağlamla başlar. |
 | arastirmaci | Sonnet | Araştırma paketi: niyet, rakipler, doğrulanmış olgular, doğrudan cevap, sayfa planı, iç linkler. Strateji modunda sıradaki konuları sıralar. |
 | yazar | Opus | Taslağı sitenin bütün dillerinde yazar; revizyonda her yoruma madde madde cevap verir. |
 | denetci | Opus | Her iddianın kaynağını açıp okur. Sitenin kilitli kurallarını ve SEO'nun anlam tarafını denetler. |
@@ -72,10 +73,11 @@ Rapor başlıkları ve karar kelimeleri (GEÇTİ, HAZIR, ONAYLANDI...) her dilde
 | gorsel | Sonnet | Görsel promptu yazar, SVG şema çizer, yapıştırılan görseli WebP'ye çevirir. |
 | yayinci | Sonnet | Kontrol (build, script'ler, ekran görüntüleri), hazırlık ve yalnızca `ONAY:` ile yayın yapar. |
 
-Üç komut yönlendirme işi yaptığı için Sonnet'te çalışır. Oturum Opus'ta açılmış olsa bile komut
-çalışırken model Sonnet'e geçer. Bu geçiş yalnızca komutun kendi turu için geçerlidir, o yüzden komut
-ajanları önde çalıştırır ve bütün işi tek turda bitirir. En ucuz yol, içerik oturumlarını baştan
-Sonnet'te açmaktır; yazar, denetçi ve editör yine kendi modelleri olan Opus'ta çalışır.
+`/makale` yalnızca seninle konuşur. Asıl işi yönlendirici ajana verir; bu ajan her işte temiz bir
+bağlamla ve Sonnet'te çalışır. Oturum ne kadar uzun olursa olsun ya da hangi modelde açılmış olursa
+olsun yönlendirme ucuz kalır. İlk gerçek kullanımda yönlendirme, uzun bir Opus oturumunda makale başına
+yaklaşık 14 M önbellek okumasına mal olmuştu. Bütün ajanlar önde çalışır; arka plana alınırlarsa
+`maliyet.mjs` bunu uyarı olarak gösterir.
 
 Kurallar iki katmanlıdır. Her sitede geçerli olan motor kuralları `skills/kurallar/SKILL.md`
 dosyasındadır ve her ajana önceden yüklenir. Siteye özgü kurallar o sitenin `site-profili.md`
